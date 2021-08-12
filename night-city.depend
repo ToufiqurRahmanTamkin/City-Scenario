@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1628718011 source:f:\all study\11th semester\computer graphics\lab\project\night-city\night-city.c
+	<GL/gl.h>
+	<GL/glut.h>
+
