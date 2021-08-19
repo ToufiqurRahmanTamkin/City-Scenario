@@ -1,5 +1,10 @@
 #include <GL/gl.h>
 #include <GL/glut.h>
+#include <stdio.h>
+
+
+
+int p=260;
 
 void fullSky()
 {
@@ -8,9 +13,11 @@ void fullSky()
     glBegin(GL_POLYGON);
     glVertex2d(0,320);
     glVertex2d(940,320);
+
     glColor3ub(0,0,0);
     glVertex2d(940,0);
     glVertex2d(0,0);
+
     glEnd();
     glFlush ();
 }
@@ -604,8 +611,10 @@ void lakeWaterLines()
     glBegin(GL_LINES);
     glVertex2d (380,300);
     glVertex2d (520,300);
+
     glVertex2d (370,290);
     glVertex2d (530,290);
+
     glVertex2d (380,280);
     glVertex2d (520,280);
     glVertex2d (385,275);
@@ -655,10 +664,13 @@ void leftRoad()
     glBegin(GL_POLYGON);
     glVertex2d (0,0);
     glVertex2d (380,320);
+
     glVertex2d (380,320);
     glVertex2d (300,320);
+
     glVertex2d (300,320);
     glVertex2d (0,80);
+
     glVertex2d (0,80);
     glVertex2d (0,0);
     glEnd();
@@ -692,18 +704,23 @@ void boat()
     //boat mid
     glVertex2d (300,60);
     glVertex2d (420,60);
+
     glVertex2d (420,60);
     glVertex2d (420,100);
+
     glVertex2d (420,100);
     glVertex2d (300,100);
+
     glVertex2d (300,100);
     glVertex2d (300,60);
 
     //boat left
     glVertex2d (300,60);
     glVertex2d (300,100);
+
     glVertex2d (300,100);
     glVertex2d (240,120);
+
     glVertex2d (240,120);
     glVertex2d (300,60);
 
@@ -1573,10 +1590,13 @@ void bridge()
     glBegin(GL_POLYGON);
     glVertex2d(380,320);
     glVertex2d(540,320);
+
     glVertex2d(540,320);
     glVertex2d(540,360);
+
     glVertex2d(540,360);
     glVertex2d(380,360);
+
     glVertex2d(380,360);
     glVertex2d(380,320);
     glEnd();
@@ -1625,10 +1645,13 @@ void bridgePillar()
     glBegin(GL_LINES);
     glVertex2d(500,460);
     glVertex2d(540,400);
+
     glVertex2d(500,440);
     glVertex2d(540,380);
+
     glVertex2d(500,420);
     glVertex2d(540,360);
+
     glVertex2d(500,400);
     glVertex2d(525,360);
     glEnd();
@@ -1637,16 +1660,49 @@ void bridgePillar()
     glBegin(GL_LINES);
     glVertex2d(380,360);
     glVertex2d(440,420);
+
     glVertex2d(400,360);
     glVertex2d(440,400);
+
     glVertex2d(420,360);
     glVertex2d(440,380);
     glEnd();
 
     glFlush ();
 }
+//moving object
+
+void move()
+{
+
+    glColor3ub (255, 255, 255);
+    glBegin(GL_POLYGON);
+    glVertex2d(p, 40);
+    glVertex2d(p+20, 40);
+
+    glVertex2d(p+20, 40);
+    glVertex2d(p+60, 120);
+
+    glVertex2d(p+60, 120);
+    glVertex2d(p, 40);
+
+    glEnd();
+    if(p<=280)
+    {
+        p=p+1.5;
+    }
+    else
+    {
+        p=260;
+    }
+    //glutPostRedisplay();
+    glFlush ();
+
+}
+
 void display(void)
 {
+
     moon();
     fullSky();
     leftCloud();
@@ -1663,7 +1719,11 @@ void display(void)
     rightCityBuildingLines();
     bridge();
     bridgePillar();
+    move();
+
+    glFlush();
 }
+
 void init (void)
 {
     glClearColor (0.0, 0.0, 0.0, 0.0);
@@ -1678,11 +1738,10 @@ int main(int argc, char** argv)
     glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize (940, 600);
     glutInitWindowPosition (0, 0);
-    glutCreateWindow ("night city");
+    glutCreateWindow ("Night City Scenario ID: (181-15-10504) (181-15-10514) (181-15-10609)");
     init ();
     glutDisplayFunc(display);
     glutMainLoop();
-
     return 0;
 }
 

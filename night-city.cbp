@@ -36,6 +36,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="move.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="night-city.c">
 			<Option compilerVar="CC" />
 		</Unit>
